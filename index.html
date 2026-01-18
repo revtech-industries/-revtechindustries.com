@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REVTECH INDUSTRIES | Innovative Technology Solutions</title>
+    <meta name="description" content="REVTECH INDUSTRIES - Leading software development company specializing in mobile apps, AI solutions, and cutting-edge technology.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0e27;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header {
+            background: rgba(26, 26, 46, 0.9);
+            padding: 20px 0;
+            border-bottom: 2px solid rgba(0, 229, 255, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #00E5FF;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #00E5FF;
+        }
+        .hero {
+            padding: 100px 0;
+            text-align: center;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1e3e 100%);
+        }
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #00E5FF;
+        }
+        .hero p {
+            font-size: 20px;
+            color: #b0b0b0;
+            margin-bottom: 30px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #00E5FF;
+            color: #0a0e27;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 229, 255, 0.3);
+        }
+        section {
+            padding: 80px 0;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+            color: #00E5FF;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        .feature {
+            background: rgba(26, 26, 46, 0.6);
+            padding: 30px;
+            border-radius: 10px;
+            border: 2px solid rgba(0, 229, 255, 0.2);
+        }
+        .feature i {
+            font-size: 40px;
+            color: #00E5FF;
+            margin-bottom: 20px;
+        }
+        .feature h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        footer {
+            background: rgba(26, 26, 46, 0.9);
+            padding: 40px 0;
+            text-align: center;
+            border-top: 2px solid rgba(0, 229, 255, 0.3);
+        }
+        .contact-info {
+            margin-top: 20px;
+        }
+        .contact-info a {
+            color: #00E5FF;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">REVTECH INDUSTRIES</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Innovative Technology Solutions</h1>
+            <p>Transforming ideas into powerful digital experiences</p>
+            <a href="#contact" class="btn">Get Started</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Us</h2>
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <p style="font-size: 18px; color: #b0b0b0;">
+                    REVTECH INDUSTRIES is a cutting-edge technology company specializing in software development, 
+                    mobile applications, and AI solutions. We deliver innovative, high-quality products that drive 
+                    business growth and digital transformation.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" style="background: rgba(26, 26, 46, 0.3);">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Mobile Development</h3>
+                    <p>Cross-platform mobile applications using Flutter, React Native, and native technologies.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-brain"></i>
+                    <h3>AI & Machine Learning</h3>
+                    <p>Intelligent solutions powered by artificial intelligence and advanced machine learning algorithms.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-code"></i>
+                    <h3>Web Development</h3>
+                    <p>Modern, responsive web applications built with the latest technologies and best practices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div style="text-align: center;">
+                <p style="font-size: 18px; margin-bottom: 20px;">Get in touch with us to discuss your project</p>
+                <div class="contact-info">
+                    <a href="mailto:revtech.industries@outlook.com">
+                        <i class="fas fa-envelope"></i> revtech.industries@outlook.com
+                    </a>
+                    <a href="https://www.linkedin.com/in/james-warnecke-17b062198/" target="_blank">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 REVTECH INDUSTRIES. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
