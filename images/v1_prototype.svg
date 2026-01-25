@@ -1,0 +1,61 @@
+<svg width="300" height="400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="deviceGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#222;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#333;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="topGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#333;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#444;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="baseGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#333;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#222;stop-opacity:1" />
+    </linearGradient>
+    <filter id="ledGlow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Device Body -->
+  <rect x="100" y="50" width="100" height="300" fill="url(#deviceGradient)" rx="50"/>
+  
+  <!-- Top Section with grooves -->
+  <rect x="100" y="50" width="100" height="40" fill="url(#topGradient)" rx="50"/>
+  <line x1="110" y1="65" x2="190" y2="65" stroke="#555" stroke-width="2"/>
+  <line x1="110" y1="75" x2="190" y2="75" stroke="#555" stroke-width="2"/>
+  
+  <!-- Circuit Board -->
+  <rect x="120" y="120" width="60" height="80" fill="#111" rx="8" stroke="#444" stroke-width="2"/>
+  
+  <!-- LEDs -->
+  <circle cx="135" cy="135" r="4" fill="#00ff00" filter="url(#ledGlow)"/>
+  <circle cx="165" cy="135" r="4" fill="#ff0000" filter="url(#ledGlow)"/>
+  
+  <!-- Central Component -->
+  <rect x="145" y="155" width="20" height="15" fill="#666" rx="2"/>
+  
+  <!-- Base with ventilation -->
+  <rect x="100" y="320" width="100" height="80" fill="url(#baseGradient)" rx="50"/>
+  <line x1="120" y1="340" x2="180" y2="340" stroke="#444" stroke-width="2"/>
+  <line x1="120" y1="350" x2="180" y2="350" stroke="#444" stroke-width="2"/>
+  <line x1="120" y1="360" x2="180" y2="360" stroke="#444" stroke-width="2"/>
+  
+  <!-- Side Modules -->
+  <rect x="70" y="150" width="20" height="100" fill="url(#deviceGradient)" rx="10"/>
+  <rect x="210" y="150" width="20" height="100" fill="url(#deviceGradient)" rx="10"/>
+  
+  <!-- Sensors on side modules -->
+  <circle cx="80" cy="170" r="5" fill="#666"/>
+  <circle cx="80" cy="220" r="5" fill="#666"/>
+  <circle cx="220" cy="170" r="5" fill="#666"/>
+  <circle cx="220" cy="220" r="5" fill="#666"/>
+  
+  <!-- Power Indicator -->
+  <rect x="140" y="100" width="20" height="10" fill="#333" rx="2"/>
+  <text x="150" y="108" text-anchor="middle" fill="#00E5FF" font-family="Arial" font-size="6">POWER</text>
+</svg>

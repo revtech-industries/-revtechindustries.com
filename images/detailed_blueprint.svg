@@ -1,0 +1,174 @@
+<svg width="600" height="600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1a1a1a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0a0a0a;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="centerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00E5FF;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#0066CC;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00E5FF;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="componentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2a2a2a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#444;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="connectionGlow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <pattern id="grid" width="25" height="25" patternUnits="userSpaceOnUse">
+      <path d="M 25 0 L 0 0 0 25" fill="none" stroke="#222" stroke-width="1" opacity="0.4"/>
+    </pattern>
+    <pattern id="circuitPattern" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="20" cy="20" r="2" fill="#333" opacity="0.3"/>
+      <line x1="0" y1="20" x2="40" y2="20" stroke="#333" stroke-width="1" opacity="0.2"/>
+      <line x1="20" y1="0" x2="20" y2="40" stroke="#333" stroke-width="1" opacity="0.2"/>
+    </pattern>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="600" height="600" fill="url(#bgGradient)" rx="30" stroke="#333" stroke-width="4"/>
+  
+  <!-- Grid Pattern -->
+  <rect width="600" height="600" fill="url(#grid)" rx="30"/>
+  
+  <!-- Circuit Pattern Overlay -->
+  <rect x="50" y="50" width="500" height="500" fill="url(#circuitPattern)" rx="25" opacity="0.6"/>
+  
+  <!-- Title -->
+  <text x="300" y="40" text-anchor="middle" fill="#00E5FF" font-family="Arial, sans-serif" font-size="24" font-weight="bold" filter="url(#glow)">SYSTEM ARCHITECTURE BLUEPRINT</text>
+  
+  <!-- Central Assembly with enhanced details -->
+  <rect x="200" y="200" width="200" height="80" fill="url(#centerGradient)" rx="20" stroke="#00E5FF" stroke-width="4" filter="url(#glow)">
+    <animate attributeName="stroke-width" values="4;6;4" dur="3s" repeatCount="indefinite"/>
+  </rect>
+  <text x="300" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="18" font-weight="bold">MICRO COMPUTER</text>
+  <text x="300" y="255" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="18" font-weight="bold">ASSEMBLY</text>
+  
+  <!-- Central processing indicators -->
+  <circle cx="300" cy="300" r="12" fill="#00E5FF" opacity="0.8">
+    <animate attributeName="r" values="12;20;12" dur="2s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="300" cy="300" r="6" fill="#00E5FF">
+    <animate attributeName="r" values="6;10;6" dur="1.5s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Enhanced connection lines with data flow animation -->
+  <line x1="300" y1="200" x2="150" y2="120" stroke="#00E5FF" stroke-width="6" filter="url(#connectionGlow)">
+    <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+  </line>
+  <polygon points="145,115 155,115 150,105" fill="#00E5FF" filter="url(#connectionGlow)">
+    <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+  </polygon>
+  
+  <line x1="300" y1="200" x2="450" y2="120" stroke="#00E5FF" stroke-width="6" filter="url(#connectionGlow)">
+    <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+  </line>
+  <polygon points="445,115 455,115 450,105" fill="#00E5FF" filter="url(#connectionGlow)">
+    <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+  </polygon>
+  
+  <line x1="300" y1="200" x2="150" y2="300" stroke="#00E5FF" stroke-width="6" filter="url(#connectionGlow)">
+    <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+  </line>
+  <polygon points="145,295 155,295 150,305" fill="#00E5FF" filter="url(#connectionGlow)">
+    <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+  </polygon>
+  
+  <line x1="300" y1="200" x2="450" y2="300" stroke="#00E5FF" stroke-width="6" filter="url(#connectionGlow)">
+    <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+  </line>
+  <polygon points="445,295 455,295 450,305" fill="#00E5FF" filter="url(#connectionGlow)">
+    <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+  </polygon>
+  
+  <line x1="300" y1="280" x2="150" y2="480" stroke="#00E5FF" stroke-width="6" filter="url(#connectionGlow)">
+    <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+  </line>
+  <polygon points="145,475 155,475 150,485" fill="#00E5FF" filter="url(#connectionGlow)">
+    <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+  </polygon>
+  
+  <line x1="300" y1="280" x2="450" y2="480" stroke="#00E5FF" stroke-width="6" filter="url(#connectionGlow)">
+    <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+  </line>
+  <polygon points="445,475 455,475 450,485" fill="#00E5FF" filter="url(#connectionGlow)">
+    <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+  </polygon>
+  
+  <!-- Data flow particles -->
+  <circle cx="200" cy="160" r="3" fill="#00E5FF">
+    <animate attributeName="cx" values="200;300;200" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="cy" values="160;200;160" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  
+  <circle cx="400" cy="160" r="3" fill="#00E5FF">
+    <animate attributeName="cx" values="400;300;400" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="cy" values="160;200;160" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Enhanced Components with detailed specs -->
+  <rect x="80" y="80" width="120" height="50" fill="url(#componentGradient)" rx="15" stroke="#666" stroke-width="3" filter="url(#glow)"/>
+  <text x="140" y="105" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="14" font-weight="bold">MICROPHONE</text>
+  <text x="140" y="120" text-anchor="middle" fill="#00E5FF" font-family="Arial, sans-serif" font-size="10">Audio Input</text>
+  <circle cx="200" cy="105" r="4" fill="#00E5FF">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  
+  <rect x="80" y="260" width="120" height="50" fill="url(#componentGradient)" rx="15" stroke="#666" stroke-width="3" filter="url(#glow)"/>
+  <text x="140" y="285" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="14" font-weight="bold">SPEAKER</text>
+  <text x="140" y="300" text-anchor="middle" fill="#00E5FF" font-family="Arial, sans-serif" font-size="10">Audio Output</text>
+  <circle cx="200" cy="285" r="4" fill="#00E5FF">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  
+  <rect x="400" y="80" width="120" height="50" fill="url(#componentGradient)" rx="15" stroke="#666" stroke-width="3" filter="url(#glow)"/>
+  <text x="460" y="105" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="14" font-weight="bold">MICROWAVE</text>
+  <text x="460" y="120" text-anchor="middle" fill="#00E5FF" font-family="Arial, sans-serif" font-size="10">Motion Sensor</text>
+  <circle cx="400" cy="105" r="4" fill="#00E5FF">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  
+  <rect x="400" y="260" width="120" height="50" fill="url(#componentGradient)" rx="15" stroke="#666" stroke-width="3" filter="url(#glow)"/>
+  <text x="460" y="285" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="14" font-weight="bold">POWER</text>
+  <text x="460" y="300" text-anchor="middle" fill="#00E5FF" font-family="Arial, sans-serif" font-size="10">Supply Unit</text>
+  <circle cx="400" cy="285" r="4" fill="#00E5FF">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  
+  <rect x="400" y="420" width="120" height="50" fill="url(#componentGradient)" rx="15" stroke="#666" stroke-width="3" filter="url(#glow)"/>
+  <text x="460" y="445" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="14" font-weight="bold">SSD</text>
+  <text x="460" y="460" text-anchor="middle" fill="#00E5FF" font-family="Arial, sans-serif" font-size="10">Storage</text>
+  <circle cx="400" cy="445" r="4" fill="#00E5FF">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  
+  <rect x="80" y="420" width="120" height="50" fill="url(#componentGradient)" rx="15" stroke="#666" stroke-width="3" filter="url(#glow)"/>
+  <text x="140" y="445" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="14" font-weight="bold">IR SENSOR</text>
+  <text x="140" y="460" text-anchor="middle" fill="#00E5FF" font-family="Arial, sans-serif" font-size="10">Infrared</text>
+  <circle cx="200" cy="445" r="4" fill="#00E5FF">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Technical specifications -->
+  <rect x="50" y="520" width="500" height="60" fill="rgba(0, 229, 255, 0.1)" rx="10" stroke="#00E5FF" stroke-width="2"/>
+  <text x="300" y="540" text-anchor="middle" fill="#00E5FF" font-family="Arial, sans-serif" font-size="12" font-weight="bold">SYSTEM SPECIFICATIONS</text>
+  <text x="150" y="555" text-anchor="middle" fill="#ccc" font-family="Arial, sans-serif" font-size="10">Processing: ARM Cortex-A72</text>
+  <text x="300" y="555" text-anchor="middle" fill="#ccc" font-family="Arial, sans-serif" font-size="10">Memory: 4GB LPDDR4</text>
+  <text x="450" y="555" text-anchor="middle" fill="#ccc" font-family="Arial, sans-serif" font-size="10">Storage: 32GB eMMC</text>
+</svg>

@@ -1,0 +1,133 @@
+<svg width="500" height="500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a1a1a;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="centerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00E5FF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0066CC;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="componentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2a2a2a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#444;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="connectionGlow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="500" height="500" fill="url(#bgGradient)" rx="25" stroke="#333" stroke-width="3"/>
+  
+  <!-- Grid Pattern -->
+  <defs>
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#222" stroke-width="1" opacity="0.3"/>
+    </pattern>
+  </defs>
+  <rect width="500" height="500" fill="url(#grid)" rx="25"/>
+  
+  <!-- Connection lines with arrows -->
+  <line x1="250" y1="180" x2="120" y2="100" stroke="#00E5FF" stroke-width="4" filter="url(#connectionGlow)">
+    <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+  </line>
+  <polygon points="115,95 125,95 120,85" fill="#00E5FF" filter="url(#connectionGlow)">
+    <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+  </polygon>
+  
+  <line x1="250" y1="180" x2="380" y2="100" stroke="#00E5FF" stroke-width="4" filter="url(#connectionGlow)">
+    <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+  </line>
+  <polygon points="375,95 385,95 380,85" fill="#00E5FF" filter="url(#connectionGlow)">
+    <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+  </polygon>
+  
+  <line x1="250" y1="180" x2="120" y2="250" stroke="#00E5FF" stroke-width="4" filter="url(#connectionGlow)">
+    <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+  </line>
+  <polygon points="115,245 125,245 120,255" fill="#00E5FF" filter="url(#connectionGlow)">
+    <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+  </polygon>
+  
+  <line x1="250" y1="180" x2="380" y2="250" stroke="#00E5FF" stroke-width="4" filter="url(#connectionGlow)">
+    <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+  </line>
+  <polygon points="375,245 385,245 380,255" fill="#00E5FF" filter="url(#connectionGlow)">
+    <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+  </polygon>
+  
+  <line x1="250" y1="180" x2="120" y2="400" stroke="#00E5FF" stroke-width="4" filter="url(#connectionGlow)">
+    <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+  </line>
+  <polygon points="115,395 125,395 120,405" fill="#00E5FF" filter="url(#connectionGlow)">
+    <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+  </polygon>
+  
+  <line x1="250" y1="180" x2="380" y2="400" stroke="#00E5FF" stroke-width="4" filter="url(#connectionGlow)">
+    <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+  </line>
+  <polygon points="375,395 385,395 380,405" fill="#00E5FF" filter="url(#connectionGlow)">
+    <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+  </polygon>
+  
+  <!-- Central Assembly -->
+  <rect x="150" y="150" width="200" height="60" fill="url(#centerGradient)" rx="15" stroke="#00E5FF" stroke-width="3" filter="url(#glow)">
+    <animate attributeName="stroke-width" values="3;5;3" dur="2s" repeatCount="indefinite"/>
+  </rect>
+  <text x="250" y="190" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Micro Computer Assembly</text>
+  
+  <!-- Components with enhanced styling -->
+  <rect x="40" y="60" width="100" height="40" fill="url(#componentGradient)" rx="12" stroke="#666" stroke-width="2" filter="url(#glow)"/>
+  <text x="90" y="85" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Microphone</text>
+  <circle cx="190" cy="80" r="3" fill="#00E5FF">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="1.5s" repeatCount="indefinite"/>
+  </circle>
+  
+  <rect x="40" y="210" width="100" height="40" fill="url(#componentGradient)" rx="12" stroke="#666" stroke-width="2" filter="url(#glow)"/>
+  <text x="90" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Speaker</text>
+  <circle cx="190" cy="230" r="3" fill="#00E5FF">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="1.5s" repeatCount="indefinite"/>
+  </circle>
+  
+  <rect x="360" y="60" width="100" height="40" fill="url(#componentGradient)" rx="12" stroke="#666" stroke-width="2" filter="url(#glow)"/>
+  <text x="410" y="85" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Microwave Sensor</text>
+  <circle cx="310" cy="80" r="3" fill="#00E5FF">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="1.5s" repeatCount="indefinite"/>
+  </circle>
+  
+  <rect x="360" y="210" width="100" height="40" fill="url(#componentGradient)" rx="12" stroke="#666" stroke-width="2" filter="url(#glow)"/>
+  <text x="410" y="235" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Power Supply</text>
+  <circle cx="310" cy="230" r="3" fill="#00E5FF">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="1.5s" repeatCount="indefinite"/>
+  </circle>
+  
+  <rect x="360" y="360" width="100" height="40" fill="url(#componentGradient)" rx="12" stroke="#666" stroke-width="2" filter="url(#glow)"/>
+  <text x="410" y="385" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Solid State Drive</text>
+  <circle cx="310" cy="380" r="3" fill="#00E5FF">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="1.5s" repeatCount="indefinite"/>
+  </circle>
+  
+  <rect x="40" y="360" width="100" height="40" fill="url(#componentGradient)" rx="12" stroke="#666" stroke-width="2" filter="url(#glow)"/>
+  <text x="90" y="385" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="12" font-weight="bold">IR Sensor</text>
+  <circle cx="190" cy="380" r="3" fill="#00E5FF">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="1.5s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Data flow indicators -->
+  <circle cx="250" cy="250" r="8" fill="#00E5FF" opacity="0.6">
+    <animate attributeName="r" values="8;15;8" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.6;0.2;0.6" dur="3s" repeatCount="indefinite"/>
+  </circle>
+</svg>

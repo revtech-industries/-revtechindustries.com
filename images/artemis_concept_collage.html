@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { 
+            margin: 0; 
+            padding: 20px; 
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a); 
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .concept-container {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .version-card {
+            background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+            min-width: 200px;
+        }
+        .version-card.v1 {
+            border-image: linear-gradient(45deg, #00f5ff, #ff0080) 1;
+        }
+        .version-card.v2 {
+            border-image: linear-gradient(45deg, #ff0080, #00ff88) 1;
+        }
+        .version-card.v3 {
+            border-image: linear-gradient(45deg, #00ff88, #00f5ff) 1;
+        }
+        .device {
+            width: 120px;
+            height: 200px;
+            margin: 0 auto 15px;
+            position: relative;
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .device.v1 {
+            background: linear-gradient(180deg, #333, #666);
+        }
+        .device.v2 {
+            background: linear-gradient(180deg, #444, #777);
+        }
+        .device.v3 {
+            background: linear-gradient(180deg, #555, #888);
+        }
+        .device::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #00E5FF, #0066CC);
+            opacity: 0.8;
+        }
+        .device::after {
+            content: '';
+            position: absolute;
+            bottom: 20px;
+            width: 100px;
+            height: 20px;
+            background: linear-gradient(90deg, #333, #666);
+            border-radius: 10px;
+        }
+        .version-label {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .version-label.v1 { color: #00f5ff; }
+        .version-label.v2 { color: #ff0080; }
+        .version-label.v3 { color: #00ff88; }
+        .description {
+            color: #ccc;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <div class="concept-container">
+        <div class="version-card v1">
+            <div class="version-label v1">V1</div>
+            <div class="device v1"></div>
+            <div class="description">
+                Initial prototype with basic sensors and cylindrical design
+            </div>
+        </div>
+        <div class="version-card v2">
+            <div class="version-label v2">V2</div>
+            <div class="device v2"></div>
+            <div class="description">
+                Enhanced version with improved AI processing and connectivity
+            </div>
+        </div>
+        <div class="version-card v3">
+            <div class="version-label v3">V3</div>
+            <div class="device v3"></div>
+            <div class="description">
+                Advanced prototype with holographic interface and multi-sensor array
+            </div>
+        </div>
+    </div>
+</body>
+</html>
