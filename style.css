@@ -5146,28 +5146,14 @@ section {
         transform: none !important;
     }
 
-    .gallery {
-        padding: 48px 0 56px;
-        overflow: visible;
-    }
-
-    /* Prioritize scroll over tap on clickable images — avoids scroll fighting with click */
-    .gallery .screenshot-card,
-    .gallery .screenshot-card img,
-    .gallery .version-card-blueprint,
-    .gallery .version-image-container,
-    .gallery .blueprint-container,
-    .gallery .blueprint-container img,
-    .gallery .v1-prototype-showcase,
-    .gallery .v1-prototype-showcase img,
-    .gallery .clickable-image {
-        touch-action: pan-y;
-    }
-
-    /* Match other sections: clip (not hidden) so gallery doesn't create its own scroll containment */
+    /* Force gallery to never be a scroll container on mobile (fixes Android/iOS stuck scroll) */
+    .gallery,
     section#gallery {
-        overflow-x: clip !important;
+        padding: 48px 0 56px;
+        overflow: visible !important;
+        overflow-x: visible !important;
         overflow-y: visible !important;
+        -webkit-overflow-scrolling: auto;
     }
 
     .gallery-hero-label {
