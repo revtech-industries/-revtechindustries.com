@@ -1,4 +1,4 @@
-// Modern Portfolio JavaScript - REVTECH INDUSTRIES
+// REVTECH INDUSTRIES Company Website
 
 document.addEventListener('DOMContentLoaded', function() {
     // Force body to be visible immediately
@@ -471,7 +471,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     button.disabled = false;
                     // Fallback to mailto
                     const data = Object.fromEntries(formData);
-                    const emailBody = `New Partnership Inquiry from REVTECH INDUSTRIES Website:\n\nName: ${data.name}\nEmail: ${data.email}\nCompany: ${data.company || 'Not provided'}\nInquiry Type: ${data.inquiry}\n\nMessage:\n${data.message}\n\n---\nSent from REVTECH INDUSTRIES Portfolio Website`;
+                    const emailBody = `New Partnership Inquiry from REVTECH INDUSTRIES Website:\n\nName: ${data.name}\nEmail: ${data.email}\nCompany: ${data.company || 'Not provided'}\nInquiry Type: ${data.inquiry}\n\nMessage:\n${data.message}\n\n---\nSent from REVTECH INDUSTRIES Company Website`;
                     const mailtoLink = `mailto:revtech.industries@outlook.com?subject=REVTECH INDUSTRIES Partnership Inquiry - ${data.inquiry}&body=${encodeURIComponent(emailBody)}`;
                     window.location.href = mailtoLink;
                     showFormMessage('AJAX failed. Opening email client as fallback. If it doesn\'t open, please email us directly.', 'error');
@@ -479,7 +479,7 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 // Fallback to mailto for non-WordPress environments
                 const data = Object.fromEntries(formData);
-                const emailBody = `New Partnership Inquiry from REVTECH INDUSTRIES Website:\n\nName: ${data.name}\nEmail: ${data.email}\nCompany: ${data.company || 'Not provided'}\nInquiry Type: ${data.inquiry}\n\nMessage:\n${data.message}\n\n---\nSent from REVTECH INDUSTRIES Portfolio Website`;
+                const emailBody = `New Partnership Inquiry from REVTECH INDUSTRIES Website:\n\nName: ${data.name}\nEmail: ${data.email}\nCompany: ${data.company || 'Not provided'}\nInquiry Type: ${data.inquiry}\n\nMessage:\n${data.message}\n\n---\nSent from REVTECH INDUSTRIES Company Website`;
                 const mailtoLink = `mailto:revtech.industries@outlook.com?subject=REVTECH INDUSTRIES Partnership Inquiry - ${data.inquiry}&body=${encodeURIComponent(emailBody)}`;
                 window.location.href = mailtoLink;
                 button.textContent = 'Email Client Opened!';
