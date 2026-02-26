@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, observerOptions);
     
     // Observe elements for animation
-    document.querySelectorAll('.project-card, .portfolio-item, .document-card, .skill-category').forEach(el => {
+    document.querySelectorAll('.project-card, .skill-category, .version-card-blueprint').forEach(el => {
         observer.observe(el);
     });
     
@@ -140,27 +140,21 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Portfolio image lazy loading
-    const portfolioImages = document.querySelectorAll('.portfolio-image img');
+    // Gallery image lazy loading (blueprint, version cards, screenshots)
+    const galleryImages = document.querySelectorAll('.version-image-container img, .blueprint-container img, .screenshots-grid img');
     const imageObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const img = entry.target;
                 img.style.opacity = '0';
                 img.style.transition = 'opacity 0.3s ease';
-                
-                img.onload = function() {
-                    img.style.opacity = '1';
-                };
-                
+                img.onload = function() { img.style.opacity = '1'; };
+                if (img.complete) img.style.opacity = '1';
                 observer.unobserve(img);
             }
         });
     });
-    
-    portfolioImages.forEach(img => {
-        imageObserver.observe(img);
-    });
+    galleryImages.forEach(img => imageObserver.observe(img));
     
     // Website loaded successfully - no loading screen needed
     
@@ -199,14 +193,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Add click effects to portfolio items
-    document.querySelectorAll('.portfolio-item').forEach(item => {
+    // Click effect for gallery version cards
+    document.querySelectorAll('.version-card-blueprint').forEach(item => {
         item.addEventListener('click', function() {
-            // Add a subtle click animation
             this.style.transform = 'scale(0.98)';
-            setTimeout(() => {
-                this.style.transform = 'scale(1)';
-            }, 150);
+            setTimeout(() => { this.style.transform = ''; }, 150);
         });
     });
     
