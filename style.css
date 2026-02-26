@@ -5121,7 +5121,14 @@ section {
         padding: 0.8rem;
     }
 
-    /* Gallery mobile tweaks — ensure everything is visible and stacked cleanly */
+    /* Gallery mobile: force visible (scroll-reveal often doesn't fire on mobile) */
+    .gallery.reveal-section,
+    .gallery .reveal-section,
+    .gallery .reveal-card {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
     .gallery {
         padding: 48px 0 56px;
         overflow: visible;
