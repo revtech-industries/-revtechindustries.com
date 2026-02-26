@@ -423,7 +423,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     // Fallback to mailto
                     const data = Object.fromEntries(formData);
                     const emailBody = `New Partnership Inquiry from REVTECH INDUSTRIES Website:\n\nName: ${data.name}\nEmail: ${data.email}\nCompany: ${data.company || 'Not provided'}\nInquiry Type: ${data.inquiry}\n\nMessage:\n${data.message}\n\n---\nSent from REVTECH INDUSTRIES Company Website`;
-                    const mailtoLink = `mailto:revtech.industries@outlook.com?subject=REVTECH INDUSTRIES Partnership Inquiry - ${data.inquiry}&body=${encodeURIComponent(emailBody)}`;
+                    const mailtoLink = `mailto:warnecke.james@outlook.com?subject=REVTECH INDUSTRIES Partnership Inquiry - ${data.inquiry}&body=${encodeURIComponent(emailBody)}`;
                     window.location.href = mailtoLink;
                     showFormMessage('AJAX failed. Opening email client as fallback. If it doesn\'t open, please email us directly.', 'error');
                 });
@@ -431,11 +431,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Fallback to mailto for non-WordPress environments
                 const data = Object.fromEntries(formData);
                 const emailBody = `New Partnership Inquiry from REVTECH INDUSTRIES Website:\n\nName: ${data.name}\nEmail: ${data.email}\nCompany: ${data.company || 'Not provided'}\nInquiry Type: ${data.inquiry}\n\nMessage:\n${data.message}\n\n---\nSent from REVTECH INDUSTRIES Company Website`;
-                const mailtoLink = `mailto:revtech.industries@outlook.com?subject=REVTECH INDUSTRIES Partnership Inquiry - ${data.inquiry}&body=${encodeURIComponent(emailBody)}`;
+                const mailtoLink = `mailto:warnecke.james@outlook.com?subject=REVTECH INDUSTRIES Partnership Inquiry - ${data.inquiry}&body=${encodeURIComponent(emailBody)}`;
                 window.location.href = mailtoLink;
                 button.textContent = 'Email Client Opened!';
                 button.style.background = 'var(--accent-color)';
-                showFormMessage('Your email client should open with a pre-filled message. If it doesn\'t open, please email us directly at revtech.industries@outlook.com', 'success');
+                showFormMessage('Your email client should open with a pre-filled message. If it doesn\'t open, please email us directly at warnecke.james@outlook.com', 'success');
                 setTimeout(() => {
                     button.textContent = originalText;
                     button.disabled = false;
@@ -518,6 +518,25 @@ document.addEventListener('DOMContentLoaded', function() {
         if (messageElement) {
             messageElement.style.display = 'none';
         }
+    }
+
+    // Closed beta request form — send request to warnecke.james@outlook.com via mailto
+    const betaRequestForm = document.getElementById('betaRequestForm');
+    const betaFormMessage = document.getElementById('betaFormMessage');
+    if (betaRequestForm && betaFormMessage) {
+        betaRequestForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            var name = (document.getElementById('beta-name') && document.getElementById('beta-name').value) || '';
+            var email = (document.getElementById('beta-email') && document.getElementById('beta-email').value) || '';
+            var platform = (document.getElementById('beta-platform') && document.getElementById('beta-platform').value) || '';
+            var subject = encodeURIComponent('Artemis AI – Closed beta access request');
+            var body = encodeURIComponent('New beta signup:\n\nName: ' + name + '\nEmail: ' + email + '\nPlatform interest: ' + (platform || 'Not specified') + '\n\nPlease add this person to the beta and send them the download link.');
+            var mailto = 'mailto:warnecke.james@outlook.com?subject=' + subject + '&body=' + body;
+            betaFormMessage.style.display = 'block';
+            betaFormMessage.className = 'form-message';
+            betaFormMessage.textContent = 'Opening your email client to send the request. Send the email to complete your request.';
+            window.location.href = mailto;
+        });
     }
     
     // Loading screen removed - website loads immediately

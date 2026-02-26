@@ -28,7 +28,7 @@
                 <li class="nav-item"><a href="#artemis-header" class="nav-link">Artemis</a></li>
                 <li class="nav-item"><a href="#gallery" class="nav-link">Gallery</a></li>
                 <li class="nav-item"><a href="pitch-deck/" class="nav-link">Pitch</a></li>
-                <li class="nav-item"><a href="#downloads" class="nav-link">Downloads</a></li>
+                <li class="nav-item"><a href="#downloads" class="nav-link">Beta</a></li>
                 <li class="nav-item"><a href="#traction" class="nav-link">Traction</a></li>
                 <li class="nav-item"><a href="#roadmap" class="nav-link">Roadmap</a></li>
                 <li class="nav-item"><a href="#testimonials" class="nav-link">Status</a></li>
@@ -57,7 +57,7 @@
                 </div>
                 <div class="hero-buttons hero-reveal-item">
                     <a href="#video" class="btn btn-primary">▶️ See Artemis in Action</a>
-                    <a href="#downloads" class="btn btn-secondary">Download Beta App</a>
+                    <a href="#downloads" class="btn btn-secondary">Request Beta Access</a>
                     <a href="#contact" class="btn btn-outline">Partner With Us</a>
                 </div>
             </div>
@@ -195,12 +195,8 @@
                     <div class="versions-showcase">
                         <h3>Evolution Timeline</h3>
                         <p class="section-subtitle" style="margin-bottom: 1.5rem;">Where I started → Artemis Halo today</p>
-                        <div class="versions-grid versions-grid--v1-and-halo">
-                            <div class="version-card-blueprint reveal-card clickable-image version-card-v1">
-                                <div class="version-card-header"><h4>V1 Prototype</h4><div class="version-status">Where I started</div></div>
-                                <div class="version-image-container"><img src="images/projects/Artemis_V1_Prototype.png" alt="V1 Hardware Prototype" onclick="window.open('images/projects/Artemis_V1_Prototype.png', '_blank')"></div>
-                                <div class="version-specs"><div class="spec-item"><span class="spec-label">Design:</span><span class="spec-value">Modular Cylindrical</span></div><div class="spec-item"><span class="spec-label">Sensors:</span><span class="spec-value">Basic Multi-Sensor</span></div><div class="spec-item"><span class="spec-label">Processing:</span><span class="spec-value">Circuit Board</span></div></div>
-                            </div>
+                        <div class="v1-prototype-showcase reveal-card">
+                            <img src="images/projects/Artemis_V1_Prototype.png" alt="V1 Hardware Prototype — Where I started" class="v1-prototype-img clickable-image" onclick="window.open('images/projects/Artemis_V1_Prototype.png', '_blank')">
                         </div>
                         <p class="section-subtitle" style="margin: 1.5rem 0 1rem;">Artemis Halo — friendly wellness companion</p>
                         <div class="halo-grid">
@@ -231,20 +227,32 @@
 
     <section id="downloads" class="downloads reveal-section">
         <div class="container">
-            <h2 class="section-title">Download Artemis AI</h2>
-            <div class="beta-warning"><div class="warning-icon">⚠️</div><div class="warning-content"><h3>BETA / EXPERIMENTAL VERSION</h3><p><strong>For testing and development purposes only.</strong> These builds are early-stage prototypes and may contain bugs or incomplete features. Use at your own risk.</p></div></div>
-            <p class="section-subtitle">Experience intelligent AI that learns from your conversations - Personalized responses that get smarter over time, completely offline!</p>
-            <div class="new-feature-notice" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; border-radius: 15px; margin: 30px 0; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
-                <div style="font-size: 48px; margin-bottom: 15px;">🎉</div>
-                <h3 style="color: white; font-size: 28px; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">NEW: Live Voice Call Feature Now Available!</h3>
-                <p style="color: rgba(255,255,255,0.95); font-size: 18px; margin-bottom: 20px; line-height: 1.6;"><strong>✨ Talk to Artemis in real-time!</strong> Experience natural voice conversations with your AI companion.<br><strong>🎤 Voice-to-Voice:</strong> Speak naturally and Artemis responds with intelligent, empathetic responses.<br><strong>🧠 Offline AI:</strong> Powered by advanced learning AI that understands context and learns from you.<br><strong>⚡ Real-Time:</strong> Instant responses with automatic feedback prevention and intelligent timing.</p>
+            <h2 class="section-title">Closed Beta Program</h2>
+            <p class="section-subtitle">Request access to the Artemis AI beta. We’ll add you to the program and send you a link to download.</p>
+            <div class="beta-request-form-wrap reveal-card">
+                <form id="betaRequestForm" class="beta-request-form" action="#" method="post">
+                    <div class="form-group">
+                        <label for="beta-name" class="form-label">Name <span class="required">*</span></label>
+                        <input type="text" id="beta-name" name="name" placeholder="Your name" required aria-required="true">
+                    </div>
+                    <div class="form-group">
+                        <label for="beta-email" class="form-label">Email <span class="required">*</span></label>
+                        <input type="email" id="beta-email" name="email" placeholder="your@email.com" required aria-required="true">
+                    </div>
+                    <div class="form-group">
+                        <label for="beta-platform" class="form-label">Platform interest</label>
+                        <select id="beta-platform" name="platform">
+                            <option value="">Select platform (optional)</option>
+                            <option value="android">Android</option>
+                            <option value="windows">Windows</option>
+                            <option value="both">Both</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-beta-submit"><i class="fas fa-paper-plane"></i> Request beta access</button>
+                    <div id="betaFormMessage" class="form-message" aria-live="polite"></div>
+                </form>
             </div>
-            <div class="download-grid">
-                <div class="download-card reveal-card android"><div class="download-icon"><i class="fab fa-android"></i></div><h3>📱 Android <span class="beta-badge">BETA</span></h3><p>Universal APK for all Android devices</p><div class="beta-notice">⚠️ Experimental build - Use for testing only</div><div class="beta-notice" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; margin-bottom: 10px;">🎉 NEW: Voice Call Feature - Talk to Artemis Offline!</div><div class="download-links"><a href="downloads/artemis_ai_public_universal_call_feature.apk" class="btn btn-primary" download><i class="fas fa-download"></i> Universal APK (with Voice Call)</a></div><div class="download-info"><span><i class="fas fa-shield-alt"></i> Protected & Obfuscated</span><span><i class="fas fa-mobile-alt"></i> Android 5.0+</span><span><i class="fas fa-brain"></i> Learning AI</span><span><i class="fas fa-phone"></i> Offline Voice Calls</span></div></div>
-                <div class="download-card windows"><div class="download-icon"><i class="fab fa-windows"></i></div><h3>🖥️ Windows <span class="beta-badge">BETA</span></h3><p>Native Windows desktop application</p><div class="beta-notice">⚠️ Experimental build - Use for testing only</div><div class="download-links"><a href="downloads/artemis_ai_windows_public_FIXED.zip" class="btn btn-primary" download><i class="fas fa-download"></i> Download for Windows</a></div><div class="download-info"><span><i class="fas fa-shield-alt"></i> Protected & Obfuscated</span><span><i class="fas fa-desktop"></i> Windows 10/11</span><span><i class="fas fa-brain"></i> Learning AI</span></div></div>
-                <div class="download-card reveal-card coming-soon"><div class="download-icon"><i class="fas fa-clock"></i></div><h3>🚀 Coming Soon</h3><p>macOS and iOS versions in development</p><div class="download-links"><button class="btn btn-secondary" disabled><i class="fas fa-clock"></i> Coming Soon</button></div><div class="download-info"><span><i class="fas fa-code"></i> In Development</span><span><i class="fas fa-apple"></i> Apple Platforms</span></div></div>
-            </div>
-            <div class="download-features"><h3>🔒 Security Features</h3><div class="pin-notice"><p><i class="fas fa-key"></i> <strong>NEW:</strong> First-time users can now set their own secure PIN for enhanced privacy and security!</p></div><div class="features-grid"><div class="feature-item"><i class="fas fa-lock"></i><span>Advanced Encryption</span></div><div class="feature-item"><i class="fas fa-shield-alt"></i><span>Secure Authentication</span></div><div class="feature-item"><i class="fas fa-user-secret"></i><span>Privacy Protection</span></div><div class="feature-item"><i class="fas fa-fingerprint"></i><span>Biometric Security</span></div><div class="feature-item"><i class="fas fa-database"></i><span>Data Security</span></div><div class="feature-item"><i class="fas fa-mobile-alt"></i><span>Mobile Security</span></div></div></div>
+            <p class="beta-form-note">We’ll add you to the program and send the beta download link to the email you provide.</p>
         </div>
     </section>
 
@@ -265,7 +273,7 @@
     </section>
 
     <section class="traction-cta">
-        <div class="container"><div class="cta-content"><h2>Join the Future of Mental Health Technology</h2><p>Be among the first to experience Artemis AI's revolutionary capabilities</p><div class="cta-buttons"><a href="#downloads" class="btn btn-primary">Download Beta</a><a href="#contact" class="btn btn-secondary">Partner With Us</a></div></div></div>
+        <div class="container"><div class="cta-content"><h2>Join the Future of Mental Health Technology</h2><p>Be among the first to experience Artemis AI's revolutionary capabilities</p><div class="cta-buttons"><a href="#downloads" class="btn btn-primary">Request Beta Access</a><a href="#contact" class="btn btn-secondary">Partner With Us</a></div></div></div>
     </section>
 
     <section id="roadmap" class="roadmap reveal-section">
@@ -306,7 +314,7 @@
                 <details class="faq-item"><summary class="faq-question"><i class="fas fa-shield-alt"></i> Is my data private and secure?</summary><div class="faq-answer"><p>Yes, privacy is our core principle. All AI processing happens locally on your device - no data is transmitted to external servers. Your conversations, biometric data, and personal information never leave your device. The application uses advanced encryption for local storage and includes PIN authentication and biometric security features for enhanced protection.</p></div></details>
                 <details class="faq-item"><summary class="faq-question"><i class="fas fa-microchip"></i> What sensors and hardware are integrated?</summary><div class="faq-answer"><p>The Artemis AI device integrates 15+ sensors including microphones for voice analysis, microwave sensors for movement detection, IR sensors for thermal monitoring, and various biometric sensors. The system architecture uses a modular cylindrical design that allows for sensor upgrades and customization. Detailed blueprints and specifications are available in our Gallery section.</p></div></details>
                 <details class="faq-item"><summary class="faq-question"><i class="fas fa-download"></i> Are the beta applications free to download?</summary><div class="faq-answer"><p>Yes, the beta applications are free to download for testing and development purposes. However, please note these are experimental builds and may contain bugs or incomplete features. Use at your own risk. The applications are protected and obfuscated for security, and include advanced features like offline AI learning and voice call capabilities.</p></div></details>
-                <details class="faq-item"><summary class="faq-question"><i class="fas fa-handshake"></i> How can I partner with REVTECH INDUSTRIES?</summary><div class="faq-answer"><p>We welcome partnerships, licensing opportunities, research collaborations, and investment inquiries. Please use the contact form on this website or email us directly at revtech.industries@outlook.com. We're particularly interested in healthcare partnerships, technology licensing, and research collaborations that can help bring Artemis AI to more users.</p></div></details>
+                <details class="faq-item"><summary class="faq-question"><i class="fas fa-handshake"></i> How can I partner with REVTECH INDUSTRIES?</summary><div class="faq-answer"><p>We welcome partnerships, licensing opportunities, research collaborations, and investment inquiries. Please use the contact form on this website or email us directly at warnecke.james@outlook.com. We're particularly interested in healthcare partnerships, technology licensing, and research collaborations that can help bring Artemis AI to more users.</p></div></details>
                 <details class="faq-item"><summary class="faq-question"><i class="fas fa-chart-line"></i> What is the development roadmap?</summary><div class="faq-answer"><p>Phase 1 (2022-2025) is complete, covering foundation and prototyping. We're currently in Year 1 (2026) of our 4-year roadmap, focusing on beta launch and market entry. Year 2 (2027) will focus on scale and growth with 10,000+ users and enterprise solutions. Year 3 (2028) targets market leadership with 100,000+ users and FDA pathway progress. Year 4 (2029) aims for industry transformation with 500,000+ users and FDA approval. See our Roadmap section for detailed quarterly milestones across all 4 years.</p></div></details>
                 <details class="faq-item"><summary class="faq-question"><i class="fas fa-copyright"></i> What is the intellectual property status?</summary><div class="faq-answer"><p>All Artemis AI technology, designs, software, and hardware specifications are copyrighted and proprietary to REVTECH INDUSTRIES. We have provisional patent applications filed for core technologies, and all trademarks for "Artemis AI" and "REVTECH INDUSTRIES" are protected. For licensing inquiries, please contact us through the contact form or email.</p></div></details>
                 <details class="faq-item"><summary class="faq-question"><i class="fas fa-phone-alt"></i> What is the Live Voice Call feature?</summary><div class="faq-answer"><p>The Live Voice Call feature allows you to have real-time voice conversations with Artemis AI. You can speak naturally, and Artemis responds with intelligent, empathetic responses powered by offline learning AI. The feature includes automatic feedback prevention, intelligent timing, and personalized responses. It's currently available in the Android beta version and works completely offline.</p></div></details>
@@ -321,7 +329,7 @@
             <div class="contact-content">
                 <div class="contact-grid">
                     <div class="contact-info">
-                        <div class="contact-item"><i class="fas fa-envelope"></i><div><h3>Email</h3><a href="mailto:revtech.industries@outlook.com">revtech.industries@outlook.com</a></div></div>
+                        <div class="contact-item"><i class="fas fa-envelope"></i><div><h3>Email</h3><a href="mailto:warnecke.james@outlook.com">warnecke.james@outlook.com</a></div></div>
                         <div class="contact-item"><i class="fab fa-linkedin"></i><div><h3>LinkedIn</h3><a href="https://www.linkedin.com/in/james-warnecke-17b062198/" target="_blank">linkedin.com/in/james-warnecke-17b062198</a></div></div>
                     </div>
                     <div class="contact-form">
@@ -348,7 +356,7 @@
                 <div class="footer-main">
                     <p>&copy; 2025 REVTECH INDUSTRIES. All rights reserved.</p>
                     <div class="social-links">
-                        <a href="mailto:revtech.industries@outlook.com" class="social-link"><i class="fas fa-envelope"></i></a>
+                        <a href="mailto:warnecke.james@outlook.com" class="social-link"><i class="fas fa-envelope"></i></a>
                         <a href="https://www.linkedin.com/in/james-warnecke-17b062198/" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
                     </div>
                 </div>
@@ -360,7 +368,7 @@
                         <li>Unauthorized reproduction, distribution, or use of any Artemis content is strictly prohibited</li>
                         <li>All product names, logos, and proprietary technology are protected intellectual property</li>
                         <li><strong>Patent Status:</strong> Technology is in active development with patent applications in process</li>
-                        <li>For licensing inquiries, contact: <a href="mailto:revtech.industries@outlook.com">revtech.industries@outlook.com</a></li>
+                        <li>For licensing inquiries, contact: <a href="mailto:warnecke.james@outlook.com">warnecke.james@outlook.com</a></li>
                     </ul>
                     <p class="disclaimer-note"><i class="fas fa-exclamation-triangle"></i> This website showcases proprietary technology. Any unauthorized use will result in legal action.</p>
                 </div>
