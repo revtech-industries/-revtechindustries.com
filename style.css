@@ -5137,8 +5137,6 @@ section {
     .gallery {
         padding: 48px 0 56px;
         overflow: visible;
-        touch-action: pan-y;
-        -webkit-overflow-scrolling: touch;
     }
 
     section#gallery {
