@@ -262,16 +262,19 @@ body::before {
     transition: 0.3s;
 }
 
-/* Hero Section — Halo: white, soft halo glow */
+/* Hero Section — Halo: white, soft halo glow; column so logo is full-width banner on top */
 .hero {
     min-height: 100vh;
     display: flex;
-    align-items: center;
-    padding: 120px 0;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding: 100px 0 80px;
     background: var(--color-bg);
     color: var(--color-text);
     position: relative;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .hero::before {
@@ -301,38 +304,40 @@ body::before {
     animation: bg-glow-pulse 8s var(--ease-soft) infinite;
 }
 
-/* Hero logo — banner style at top: wide strip, image fits without stretching */
+/* Hero logo — full-width banner at top; image fills width, no box */
 .hero-logo-banner {
     width: 100%;
-    padding: 1.5rem 24px 1.25rem;
+    padding: 1rem 16px 1.25rem;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     z-index: 1;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
 }
 .hero-logo-banner .hero-logo-img {
     display: block;
-    width: auto;
+    width: 100%;
+    max-width: 100%;
     height: auto;
-    max-width: min(92vw, 800px);
-    max-height: 100px;
+    max-height: 110px;
     object-fit: contain;
     object-position: center;
 }
 @media (min-width: 768px) {
     .hero-logo-banner {
-        padding: 2.5rem 32px 1.5rem;
+        padding: 1.5rem 24px 1.5rem;
     }
     .hero-logo-banner .hero-logo-img {
-        max-width: min(88vw, 800px);
-        max-height: 120px;
+        max-height: 130px;
     }
 }
 
 .hero-container {
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 1.5rem auto 0;
     padding: 0 20px;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -340,6 +345,7 @@ body::before {
     align-items: center;
     position: relative;
     z-index: 1;
+    flex: 0 0 auto;
 }
 
 /* Hero reveal — logo first (0ms), then staggered content (200ms stagger) */
@@ -463,21 +469,25 @@ body::before {
     box-shadow: 0 0 16px rgba(76, 211, 255, 0.2);
 }
 
-/* Hero image: halo glow (6s pulse) + gentle float (4–6px); no gray box around prototype */
+/* Hero image: halo glow + float; no box or overlay around device */
 .hero-image-wrap {
     position: relative;
-    padding: 20px;
-    min-height: 320px;
-    background: transparent;
+    padding: 16px;
+    min-height: 300px;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    overflow: visible;
 }
 .hero-image-wrap::before {
     content: '';
     position: absolute;
-    inset: -30%;
-    background: radial-gradient(ellipse at center, rgba(76, 211, 255, 0.2) 0%, transparent 60%);
+    inset: -40%;
+    background: radial-gradient(ellipse at center, rgba(76, 211, 255, 0.15) 0%, transparent 55%);
     border-radius: 50%;
     animation: halo-pulse 6s var(--ease-soft) infinite;
     pointer-events: none;
+    z-index: 0;
 }
 .hero-image {
     position: relative;
@@ -485,9 +495,10 @@ body::before {
     align-items: center;
     justify-content: center;
     animation: hero-float 5s var(--ease-soft) infinite;
-    background: transparent;
-    border: none;
-    box-shadow: none;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    overflow: visible;
 }
 
 .hero-product {
@@ -496,10 +507,11 @@ body::before {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: transparent;
-    border: none;
-    box-shadow: none;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
     padding: 0;
+    overflow: visible;
 }
 .hero-product-img {
     max-width: 280px;
@@ -507,10 +519,10 @@ body::before {
     height: auto;
     object-fit: contain;
     display: block;
-    border: none;
-    outline: none;
-    box-shadow: none;
-    background: transparent;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
 }
 
 .floating-card {
