@@ -262,7 +262,7 @@ body::before {
     transition: 0.3s;
 }
 
-/* Hero Section — Halo: white, soft halo glow; column so logo is full-width banner on top */
+/* Hero Section — no background; column so logo is full-width banner on top */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -270,28 +270,14 @@ body::before {
     align-items: stretch;
     justify-content: flex-start;
     padding: 100px 0 80px;
-    background: var(--color-bg);
+    background: transparent;
     color: var(--color-text);
     position: relative;
     overflow-x: hidden;
     overflow-y: auto;
 }
 
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 120%;
-    max-width: 800px;
-    height: 60%;
-    background:
-        radial-gradient(ellipse at center, rgba(255,255,255,0.9) 0%, rgba(183, 241, 255, 0.2) 25%, rgba(76, 211, 255, 0.12) 45%, transparent 70%);
-    pointer-events: none;
-    animation: bg-scale-breath 10s var(--ease-soft) infinite, bg-glow-pulse 8s var(--ease-soft) infinite;
-}
-
+.hero::before,
 .hero::after { display: none; }
 
 .hero .halo-ring {
@@ -304,7 +290,10 @@ body::before {
     animation: bg-glow-pulse 8s var(--ease-soft) infinite;
 }
 
-/* Hero logo — BANNER: full-width horizontal strip, image fills width */
+/* Hero logo — centered strip; image constrained so it doesn’t stretch full width */
+.hero {
+    align-items: center;
+}
 .hero-logo-banner {
     width: 100%;
     max-width: 100vw;
@@ -320,10 +309,14 @@ body::before {
 }
 .hero-logo-strip {
     width: 100%;
+    max-width: min(92vw, 560px);
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
+    text-align: center;
 }
 .hero-logo-banner .hero-logo-img {
     display: block;
@@ -343,18 +336,23 @@ body::before {
     text-transform: uppercase;
     color: var(--color-text-soft);
     opacity: 0.95;
+    text-align: center;
 }
 @media (min-width: 768px) {
     .hero-logo-banner {
         padding: 1.5rem 32px 2rem;
     }
-    .hero-logo-strip { gap: 0.75rem; }
+    .hero-logo-strip {
+        max-width: min(92vw, 640px);
+        gap: 0.75rem;
+    }
     .hero-logo-banner .hero-logo-img {
-        max-width: min(92vw, 1100px);
+        max-width: 100%;
     }
 }
 
 .hero-container {
+    width: 100%;
     max-width: 1200px;
     margin: 1.5rem auto 0;
     padding: 0 20px;
