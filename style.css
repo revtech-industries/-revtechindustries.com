@@ -318,6 +318,13 @@ body::before {
     border: none !important;
     box-shadow: none !important;
 }
+.hero-logo-strip {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
 .hero-logo-banner .hero-logo-img {
     display: block;
     width: 100%;
@@ -325,11 +332,23 @@ body::before {
     height: auto;
     object-fit: contain;
     object-position: center;
+    image-rendering: -webkit-optimize-contrast;
+    filter: contrast(1.06) brightness(1.02);
+}
+.hero-logo-slogan {
+    margin: 0;
+    font-size: clamp(0.95rem, 2.2vw, 1.15rem);
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-soft);
+    opacity: 0.95;
 }
 @media (min-width: 768px) {
     .hero-logo-banner {
         padding: 1.5rem 32px 2rem;
     }
+    .hero-logo-strip { gap: 0.75rem; }
     .hero-logo-banner .hero-logo-img {
         max-width: min(92vw, 1100px);
     }
@@ -1730,6 +1749,11 @@ table.data-table td strong {
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
+.beta-request-form select option {
+    background: #FFFFFF;
+    color: #1A1A1A;
+}
+
 .beta-request-form input:focus,
 .beta-request-form select:focus {
     outline: none;
@@ -2759,8 +2783,8 @@ table.data-table td strong {
 }
 
 .form-group select option {
-    background: var(--bg-dark);
-    color: white;
+    background: var(--color-bg);
+    color: var(--color-text);
 }
 
 .form-group textarea {
