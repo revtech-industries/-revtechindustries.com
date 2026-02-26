@@ -5147,6 +5147,19 @@ section {
         overflow: visible;
     }
 
+    /* Prioritize scroll over tap on clickable images — avoids scroll fighting with click */
+    .gallery .screenshot-card,
+    .gallery .screenshot-card img,
+    .gallery .version-card-blueprint,
+    .gallery .version-image-container,
+    .gallery .blueprint-container,
+    .gallery .blueprint-container img,
+    .gallery .v1-prototype-showcase,
+    .gallery .v1-prototype-showcase img,
+    .gallery .clickable-image {
+        touch-action: pan-y;
+    }
+
     section#gallery {
         overflow-x: hidden !important;
         overflow-y: visible !important;
