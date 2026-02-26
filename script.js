@@ -26,14 +26,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // Back to Top Button
     const backToTopButton = document.getElementById('backToTop');
     
-    // Show/hide back to top button based on scroll position
+    // Show/hide back to top button based on scroll position (passive = smoother mobile scroll)
     window.addEventListener('scroll', function() {
         if (window.pageYOffset > 300) {
             backToTopButton.classList.add('visible');
         } else {
             backToTopButton.classList.remove('visible');
         }
-    });
+    }, { passive: true });
     
     // Smooth scroll to top when button is clicked
     backToTopButton.addEventListener('click', function() {
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (navbar) {
         window.addEventListener('scroll', function() {
             navbar.classList.toggle('scrolled', window.scrollY > 50);
-        });
+        }, { passive: true });
     }
     
     // Active navigation link highlighting
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 link.classList.add('active');
             }
         });
-    });
+    }, { passive: true });
     
     // Intersection Observer for existing .animate class (skill-category etc.)
     const observerOptions = {
@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function() {
         window.addEventListener('scroll', function() {
             const deg = Math.min(window.scrollY * 0.06, 2);
             haloRings.forEach(el => { el.style.transform = `rotate(${deg}deg)`; });
-        });
+        }, { passive: true });
     }
     
     // Gallery image lazy loading (blueprint, version cards, screenshots)
@@ -235,7 +235,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Your scroll handling code here
     }, 10);
     
-    window.addEventListener('scroll', debouncedScrollHandler);
+    window.addEventListener('scroll', debouncedScrollHandler, { passive: true });
     
     // Add loading states for external links
     document.querySelectorAll('a[target="_blank"]').forEach(link => {
@@ -348,7 +348,7 @@ document.addEventListener('DOMContentLoaded', function() {
             scrollTimeout = setTimeout(() => {
                 // Scroll handling code here
             }, 10);
-        });
+        }, { passive: true });
     };
     
     optimizePerformance();
