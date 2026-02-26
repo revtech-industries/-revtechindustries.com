@@ -304,11 +304,11 @@ body::before {
     animation: bg-glow-pulse 8s var(--ease-soft) infinite;
 }
 
-/* Hero logo — banner: long horizontal strip, logo large inside it */
+/* Hero logo — BANNER: full-width horizontal strip, image fills width */
 .hero-logo-banner {
     width: 100%;
     max-width: 100vw;
-    padding: 1rem 20px 1.5rem;
+    padding: 1rem 16px 1.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -321,27 +321,17 @@ body::before {
 .hero-logo-banner .hero-logo-img {
     display: block;
     width: 100%;
-    max-width: 95vw;
+    max-width: 100%;
     height: auto;
-    min-height: 100px;
-    max-height: 200px;
     object-fit: contain;
     object-position: center;
 }
-@media (min-width: 600px) {
-    .hero-logo-banner .hero-logo-img {
-        max-width: 85vw;
-        max-height: 220px;
-    }
-}
 @media (min-width: 768px) {
     .hero-logo-banner {
-        padding: 1.5rem 40px 2rem;
+        padding: 1.5rem 32px 2rem;
     }
     .hero-logo-banner .hero-logo-img {
-        max-width: 880px;
-        min-height: 140px;
-        max-height: 280px;
+        max-width: min(92vw, 1100px);
     }
 }
 
