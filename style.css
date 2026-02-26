@@ -134,6 +134,22 @@ body.admin-bar .navbar {
     }
 }
 
+/* Full-page backdrop: hero image + radial for variety */
+.site-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    pointer-events: none;
+    background-color: var(--color-bg);
+    background-image: url(images/bg-hero.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 body::before {
     content: '';
     position: fixed;
@@ -141,7 +157,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(76, 211, 255, 0.08) 0%, transparent 50%);
+    background: linear-gradient(180deg, rgba(255,255,255,0.75) 0%, rgba(255,255,255,0.5) 40%, rgba(247,249,250,0.6) 100%);
     pointer-events: none;
     z-index: -1;
 }
