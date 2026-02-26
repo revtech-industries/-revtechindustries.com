@@ -118,13 +118,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }, revealCardOptions);
     document.querySelectorAll('.reveal-card').forEach(el => revealCardObserver.observe(el));
 
-    // Halo rings in backgrounds — rotate 1–2° on scroll for subtle motion
+    // Halo rings — rotate on scroll (desktop only; on mobile this causes scroll jank from DOM writes)
     const haloRings = document.querySelectorAll('.halo-ring');
     if (haloRings.length) {
-        window.addEventListener('scroll', function() {
-            const deg = Math.min(window.scrollY * 0.06, 2);
-            haloRings.forEach(el => { el.style.transform = `rotate(${deg}deg)`; });
-        }, { passive: true });
+        var haloScroll = function() {
+            if (window.innerWidth <= 768) return;
+            var deg = Math.min(window.scrollY * 0.06, 2);
+            haloRings.forEach(function(el) { el.style.transform = 'rotate(' + deg + 'deg)'; });
+        };
+        window.addEventListener('scroll', haloScroll, { passive: true });
+        haloScroll();
     }
     
     // Gallery image lazy loading (blueprint, version cards, screenshots)

@@ -4995,13 +4995,17 @@ section {
         -webkit-text-size-adjust: 100% !important;
         text-size-adjust: 100% !important;
         overflow-x: clip;
-        -webkit-overflow-scrolling: touch;
+        scroll-behavior: auto;
     }
 
     body {
         overflow-x: clip !important;
-        -webkit-overflow-scrolling: touch;
-        touch-action: manipulation;
+        touch-action: pan-y;
+    }
+
+    /* Sections: clip instead of hidden to avoid iOS scroll containment jank */
+    section {
+        overflow-x: clip !important;
     }
     
     /* FAQ Section Mobile Styles */
@@ -5160,8 +5164,9 @@ section {
         touch-action: pan-y;
     }
 
+    /* Match other sections: clip (not hidden) so gallery doesn't create its own scroll containment */
     section#gallery {
-        overflow-x: hidden !important;
+        overflow-x: clip !important;
         overflow-y: visible !important;
     }
 
