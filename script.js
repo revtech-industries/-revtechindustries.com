@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.body.style.opacity = '1';
     document.body.style.visibility = 'visible';
     console.log('Website loading - body made visible');
+
     // Mobile Navigation Toggle
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
@@ -57,17 +58,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Navbar background on scroll (keep dark theme)
+    // Navbar: Halo style — slightly brighter on scroll
     const navbar = document.querySelector('.navbar');
     if (navbar) {
         window.addEventListener('scroll', function() {
-            if (window.scrollY > 50) {
-                navbar.style.background = 'rgba(10, 10, 15, 0.98)';
-                navbar.style.boxShadow = '0 0 25px rgba(0, 245, 255, 0.25)';
-            } else {
-                navbar.style.background = 'rgba(10, 10, 15, 0.9)';
-                navbar.style.boxShadow = '0 0 20px rgba(0, 245, 255, 0.2)';
-            }
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
         });
     }
     
@@ -93,52 +88,44 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Intersection Observer for animations
+    // Intersection Observer for existing .animate class (skill-category etc.)
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     };
-    
     const observer = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate');
-            }
+            if (entry.isIntersecting) entry.target.classList.add('animate');
         });
     }, observerOptions);
-    
-    // Observe elements for animation
-    document.querySelectorAll('.project-card, .skill-category, .version-card-blueprint').forEach(el => {
-        observer.observe(el);
-    });
-    
-    // Typing animation for hero title
-    const heroTitle = document.querySelector('.hero-title');
-    if (heroTitle) {
-        const text = heroTitle.innerHTML;
-        heroTitle.innerHTML = '';
-        let i = 0;
-        
-        function typeWriter() {
-            if (i < text.length) {
-                heroTitle.innerHTML += text.charAt(i);
-                i++;
-                setTimeout(typeWriter, 50);
-            }
-        }
-        
-        // Start typing animation after a short delay
-        setTimeout(typeWriter, 1000);
+    document.querySelectorAll('.project-card, .skill-category, .version-card-blueprint').forEach(el => observer.observe(el));
+
+    // Section reveal — fade upward on enter viewport
+    const revealSectionOptions = { threshold: 0.08, rootMargin: '0px 0px -40px 0px' };
+    const revealSectionObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('is-visible');
+        });
+    }, revealSectionOptions);
+    document.querySelectorAll('.reveal-section').forEach(el => revealSectionObserver.observe(el));
+
+    // Card reveal — scale 0.96 → 1 on enter viewport
+    const revealCardOptions = { threshold: 0.12, rootMargin: '0px 0px -30px 0px' };
+    const revealCardObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('is-visible');
+        });
+    }, revealCardOptions);
+    document.querySelectorAll('.reveal-card').forEach(el => revealCardObserver.observe(el));
+
+    // Halo rings in backgrounds — rotate 1–2° on scroll for subtle motion
+    const haloRings = document.querySelectorAll('.halo-ring');
+    if (haloRings.length) {
+        window.addEventListener('scroll', function() {
+            const deg = Math.min(window.scrollY * 0.06, 2);
+            haloRings.forEach(el => { el.style.transform = `rotate(${deg}deg)`; });
+        });
     }
-    
-    // Parallax effect for hero section
-    window.addEventListener('scroll', function() {
-        const scrolled = window.pageYOffset;
-        const hero = document.querySelector('.hero');
-        if (hero) {
-            hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-        }
-    });
     
     // Gallery image lazy loading (blueprint, version cards, screenshots)
     const galleryImages = document.querySelectorAll('.version-image-container img, .blueprint-container img, .screenshots-grid img');
@@ -164,34 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return re.test(email);
     }
     
-    // Smooth reveal animation for sections
-    const revealElements = document.querySelectorAll('section');
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, { threshold: 0.1 });
-    
-    revealElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        revealObserver.observe(el);
-    });
-    
-    // Add hover effects to project cards
-    document.querySelectorAll('.project-card').forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-10px) scale(1.02)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-        });
-    });
+    // Section and card reveal use .reveal-section / .reveal-card + .is-visible (see observers above)
     
     // Click effect for gallery version cards
     document.querySelectorAll('.version-card-blueprint').forEach(item => {
