@@ -301,6 +301,32 @@ body::before {
     animation: bg-glow-pulse 8s var(--ease-soft) infinite;
 }
 
+/* Hero logo — full-width, visible before everything else */
+.hero-logo-banner {
+    width: 100%;
+    padding: 1.5rem 24px 1.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+.hero-logo-banner .hero-logo-img {
+    display: block;
+    width: 100%;
+    max-width: min(90vw, 720px);
+    height: auto;
+    object-fit: contain;
+}
+@media (min-width: 768px) {
+    .hero-logo-banner {
+        padding: 2.5rem 32px 1.5rem;
+    }
+    .hero-logo-banner .hero-logo-img {
+        max-width: min(85vw, 720px);
+    }
+}
+
 .hero-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -313,34 +339,21 @@ body::before {
     z-index: 1;
 }
 
-/* Hero reveal — staggered fade-in (200ms stagger) */
+/* Hero reveal — logo first (0ms), then staggered content (200ms stagger) */
 .hero-reveal-item {
     opacity: 0;
     animation: hero-reveal 0.6s var(--ease-soft) forwards;
 }
-.hero-reveal-item:nth-child(1) { animation-delay: 0ms; }
-.hero-reveal-item:nth-child(2) { animation-delay: 200ms; }
-.hero-reveal-item:nth-child(3) { animation-delay: 400ms; }
-.hero-reveal-item:nth-child(4) { animation-delay: 600ms; }
-.hero-reveal-item:nth-child(5) { animation-delay: 800ms; }
-.hero-reveal-item:nth-child(6) { animation-delay: 1000ms; }
-.hero-reveal-item:nth-child(7) { animation-delay: 1200ms; }
-.hero-reveal-item:nth-child(8) { animation-delay: 1400ms; }
-.hero-reveal-item:nth-child(9) { animation-delay: 1600ms; }
-.hero-reveal-item:nth-child(10) { animation-delay: 1800ms; }
-.hero-reveal-item:nth-child(11) { animation-delay: 2000ms; }
-
-/* Hero banner — RevTech logo */
-.hero-logo {
-    margin-bottom: 1rem;
-}
-.hero-logo-img {
-    display: block;
-    max-width: 320px;
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-}
+.hero-logo-banner.hero-reveal-item { animation-delay: 0ms; }
+.hero-content .hero-reveal-item:nth-child(1) { animation-delay: 200ms; }
+.hero-content .hero-reveal-item:nth-child(2) { animation-delay: 400ms; }
+.hero-content .hero-reveal-item:nth-child(3) { animation-delay: 600ms; }
+.hero-content .hero-reveal-item:nth-child(4) { animation-delay: 800ms; }
+.hero-content .hero-reveal-item:nth-child(5) { animation-delay: 1000ms; }
+.hero-content .hero-reveal-item:nth-child(6) { animation-delay: 1200ms; }
+.hero-content .hero-reveal-item:nth-child(7) { animation-delay: 1400ms; }
+.hero-content .hero-reveal-item:nth-child(8) { animation-delay: 1600ms; }
+.hero-content .hero-reveal-item:nth-child(9) { animation-delay: 1800ms; }
 
 .hero-title {
     font-size: clamp(2.5rem, 5vw, 64px);
@@ -450,6 +463,8 @@ body::before {
 /* Hero image: halo glow (6s pulse) + gentle float (4–6px) */
 .hero-image-wrap {
     position: relative;
+    padding: 20px;
+    min-height: 320px;
 }
 .hero-image-wrap::before {
     content: '';
@@ -509,20 +524,21 @@ body::before {
 }
 
 .floating-card:nth-child(2) {
-    top: -50px;
-    left: -50px;
+    top: -20px;
+    left: 0;
     animation-delay: 0s;
 }
 
 .floating-card:nth-child(3) {
-    top: 50px;
-    right: -50px;
+    top: 40px;
+    right: 0;
+    left: auto;
     animation-delay: 2s;
 }
 
 .floating-card:nth-child(4) {
-    bottom: -50px;
-    left: 50px;
+    bottom: 0;
+    left: 30px;
     animation-delay: 4s;
 }
 
@@ -2472,22 +2488,20 @@ table.data-table td strong {
     display: block;
 }
 
-/* Contact Section */
+/* Contact Section — high contrast for readability */
 .contact {
     background: var(--color-bg-soft);
-    color: var(--color-text);
+    color: #1A1A1A;
 }
 
 .contact .section-title {
-    color: var(--color-text);
-    background: linear-gradient(45deg, #fbbf24, #f59e0b);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #1A1A1A;
+    font-weight: 600;
 }
 
 .contact .section-subtitle {
-    color: var(--color-text-soft);
+    color: #1A1A1A;
+    font-weight: 500;
 }
 
 .contact-content {
@@ -2628,6 +2642,7 @@ table.data-table td strong {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    color: #1A1A1A;
 }
 
 .contact-item {
@@ -2635,14 +2650,15 @@ table.data-table td strong {
     align-items: center;
     gap: 1.5rem;
     padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.05);
+    background: #FFFFFF;
     border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(26, 26, 26, 0.12);
     transition: all 0.3s ease;
 }
 
 .contact-item:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: #F7F9FA;
+    border-color: rgba(76, 211, 255, 0.35);
     transform: translateX(10px);
 }
 
@@ -2655,17 +2671,20 @@ table.data-table td strong {
 
 .contact-item h3 {
     font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 0.3rem;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+    color: #1A1A1A;
 }
-.contact-info .contact-item h3 { color: var(--color-text); }
+.contact-info .contact-item h3 { color: #1A1A1A; }
 
 .contact-item a {
     text-decoration: none;
     transition: color 0.2s ease;
+    font-weight: 500;
+    color: #1A1A1A;
 }
-.contact-info .contact-item a { color: var(--color-text); }
-.contact-info .contact-item a:hover { color: var(--color-accent); }
+.contact-info .contact-item a { color: #1A1A1A; }
+.contact-info .contact-item a:hover { color: #0D7A9E; }
 
 /* Footer */
 .footer {
