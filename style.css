@@ -5121,7 +5121,12 @@ section {
         padding: 0.8rem;
     }
 
-    /* Gallery mobile: force visible (scroll-reveal often doesn't fire on mobile) */
+    /* Hero: no inner scroll on mobile — let the page scroll as one */
+    .hero {
+        overflow: visible;
+    }
+
+    /* Gallery mobile: force visible and allow scroll-through (no scroll trap) */
     .gallery.reveal-section,
     .gallery .reveal-section,
     .gallery .reveal-card {
@@ -5132,6 +5137,13 @@ section {
     .gallery {
         padding: 48px 0 56px;
         overflow: visible;
+        touch-action: pan-y;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    section#gallery {
+        overflow-x: hidden !important;
+        overflow-y: visible !important;
     }
 
     .gallery-hero-label {
