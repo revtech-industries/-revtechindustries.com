@@ -66,27 +66,33 @@ document.addEventListener('DOMContentLoaded', function() {
         }, { passive: true });
     }
     
-    // Active navigation link highlighting
+    // Active navigation link highlighting — use Intersection Observer (no scroll listener = smooth mobile scroll)
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
-    
-    window.addEventListener('scroll', function() {
-        let current = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - 100;
-            const sectionHeight = section.clientHeight;
-            if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-                current = section.getAttribute('id');
-            }
-        });
-        
+    let currentSectionId = '';
+
+    function setActiveNav(id) {
+        if (id === currentSectionId) return;
+        currentSectionId = id;
         navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${current}`) {
-                link.classList.add('active');
+            link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+        });
+    }
+
+    const navObserver = new IntersectionObserver(function(entries) {
+        var bestId = null;
+        var bestRatio = 0;
+        entries.forEach(entry => {
+            if (!entry.isIntersecting || !entry.intersectionRatio) return;
+            var id = entry.target.getAttribute('id');
+            if (id && entry.intersectionRatio > bestRatio) {
+                bestRatio = entry.intersectionRatio;
+                bestId = id;
             }
         });
-    }, { passive: true });
+        if (bestId) setActiveNav(bestId);
+    }, { root: null, rootMargin: '-80px 0px -40% 0px', threshold: [0, 0.1, 0.25, 0.5, 0.75, 1] });
+    sections.forEach(function(section) { navObserver.observe(section); });
     
     // Intersection Observer for existing .animate class (skill-category etc.)
     const observerOptions = {
@@ -220,26 +226,6 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
     document.head.appendChild(style);
     
-    // Performance optimization: Debounce scroll events
-    function debounce(func, wait) {
-        let timeout;
-        return function executedFunction(...args) {
-            const later = () => {
-                clearTimeout(timeout);
-                func(...args);
-            };
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-        };
-    }
-    
-    // Apply debouncing to scroll events
-    const debouncedScrollHandler = debounce(function() {
-        // Your scroll handling code here
-    }, 10);
-    
-    window.addEventListener('scroll', debouncedScrollHandler, { passive: true });
-    
     // Add loading states for external links
     document.querySelectorAll('a[target="_blank"]').forEach(link => {
         link.addEventListener('click', function() {
@@ -341,17 +327,6 @@ document.addEventListener('DOMContentLoaded', function() {
         };
         
         preloadResources();
-        
-        // Debounce scroll events for better performance
-        let scrollTimeout;
-        window.addEventListener('scroll', () => {
-            if (scrollTimeout) {
-                clearTimeout(scrollTimeout);
-            }
-            scrollTimeout = setTimeout(() => {
-                // Scroll handling code here
-            }, 10);
-        }, { passive: true });
     };
     
     optimizePerformance();
