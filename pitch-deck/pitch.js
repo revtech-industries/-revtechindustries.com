@@ -3,7 +3,7 @@
 class PitchDeck {
     constructor() {
         this.currentSlide = 1;
-        this.totalSlides = 7;
+        this.totalSlides = 6;
         this.slides = document.querySelectorAll('.slide');
         this.indicators = document.querySelectorAll('.indicator');
         this.prevBtn = document.getElementById('prevBtn');
