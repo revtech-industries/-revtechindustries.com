@@ -1,0 +1,14 @@
+/
+  Cache-Control: public, max-age=60, must-revalidate
+
+/pitch-deck/
+  Cache-Control: public, max-age=0, must-revalidate
+
+/pitch-deck/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/pitch-deck/index.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/*.html
+  Cache-Control: public, max-age=60, must-revalidate
