@@ -77,17 +77,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const lightbox = document.getElementById("lightbox");
   const lightboxImage = document.getElementById("lightbox-image");
+  const lightboxVideo = document.getElementById("lightbox-video");
   const lightboxCaption = document.getElementById("lightbox-caption");
   let lastFocus = null;
+
+  const withReplay = (src) => {
+    if (!src) return src;
+    const joiner = src.includes("?") ? "&" : "?";
+    return `${src}${joiner}replay=${Date.now()}`;
+  };
+
+  const stopLightboxVideo = () => {
+    if (!lightboxVideo) return;
+    lightboxVideo.pause();
+    lightboxVideo.removeAttribute("src");
+    lightboxVideo.querySelectorAll("source").forEach((el) => el.remove());
+    lightboxVideo.load();
+    lightboxVideo.hidden = true;
+  };
 
   const closeLightbox = () => {
     if (!lightbox || lightbox.hidden) return;
     lightbox.hidden = true;
     document.body.classList.remove("lightbox-open");
     if (lightboxImage) {
+      lightboxImage.hidden = true;
       lightboxImage.removeAttribute("src");
       lightboxImage.alt = "";
     }
+    stopLightboxVideo();
     if (lightboxCaption) lightboxCaption.textContent = "";
     if (lastFocus && typeof lastFocus.focus === "function") {
       lastFocus.focus();
@@ -95,14 +113,48 @@ document.addEventListener("DOMContentLoaded", () => {
     lastFocus = null;
   };
 
-  const openLightbox = (src, alt) => {
+  const openLightboxImage = (src, alt) => {
     if (!lightbox || !lightboxImage || !src) return;
-    lastFocus = document.activeElement;
-    // Restart animated GIFs from frame 0 on each open.
+    stopLightboxVideo();
+    lightboxImage.hidden = false;
     lightboxImage.removeAttribute("src");
-    const joiner = src.includes("?") ? "&" : "?";
-    lightboxImage.src = `${src}${joiner}replay=${Date.now()}`;
+    lightboxImage.src = withReplay(src);
     lightboxImage.alt = alt || "";
+    if (lightboxCaption) lightboxCaption.textContent = alt || "";
+    lightbox.hidden = false;
+    document.body.classList.add("lightbox-open");
+    const closeBtn = lightbox.querySelector(".lightbox-close");
+    if (closeBtn) closeBtn.focus();
+  };
+
+  const openLightboxVideo = ({ mp4, webm, poster, alt }) => {
+    if (!lightbox || !lightboxVideo || (!mp4 && !webm)) return;
+    lastFocus = document.activeElement;
+    if (lightboxImage) {
+      lightboxImage.hidden = true;
+      lightboxImage.removeAttribute("src");
+    }
+    stopLightboxVideo();
+    lightboxVideo.hidden = false;
+    lightboxVideo.poster = poster ? withReplay(poster) : "";
+    // Prefer webm then mp4 as sources for reliable loop playback.
+    if (webm) {
+      const s = document.createElement("source");
+      s.src = withReplay(webm);
+      s.type = "video/webm";
+      lightboxVideo.appendChild(s);
+    }
+    if (mp4) {
+      const s = document.createElement("source");
+      s.src = withReplay(mp4);
+      s.type = "video/mp4";
+      lightboxVideo.appendChild(s);
+    }
+    lightboxVideo.load();
+    const playPromise = lightboxVideo.play();
+    if (playPromise && typeof playPromise.catch === "function") {
+      playPromise.catch(() => {});
+    }
     if (lightboxCaption) lightboxCaption.textContent = alt || "";
     lightbox.hidden = false;
     document.body.classList.add("lightbox-open");
@@ -112,12 +164,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelectorAll(".zoom-trigger").forEach((trigger) => {
     trigger.addEventListener("click", () => {
-      const dataSrc = trigger.getAttribute("data-lightbox-src");
+      lastFocus = document.activeElement;
       const dataAlt = trigger.getAttribute("data-lightbox-alt");
+      const alt =
+        dataAlt ||
+        trigger.getAttribute("aria-label") ||
+        trigger.querySelector("img, video")?.getAttribute("aria-label") ||
+        trigger.querySelector("img")?.alt ||
+        "";
+
+      const videoMp4 = trigger.getAttribute("data-lightbox-video");
+      const videoWebm = trigger.getAttribute("data-lightbox-video-webm");
+      if (videoMp4 || videoWebm) {
+        openLightboxVideo({
+          mp4: videoMp4,
+          webm: videoWebm,
+          poster: trigger.getAttribute("data-lightbox-poster") || "",
+          alt,
+        });
+        return;
+      }
+
+      const dataSrc = trigger.getAttribute("data-lightbox-src");
       const img = trigger.querySelector("img");
       const src = dataSrc || img?.currentSrc || img?.src;
-      const alt = dataAlt || img?.alt || trigger.getAttribute("aria-label") || "";
-      openLightbox(src, alt);
+      openLightboxImage(src, alt);
     });
   });
 

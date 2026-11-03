@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=gaia5">
+  <link rel="stylesheet" href="style.css?v=gaia6">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -235,8 +235,28 @@
       </ol>
       <div class="gallery gallery-tech reveal">
         <figure>
-          <button type="button" class="zoom-trigger" aria-label="Enlarge 3D Future Concept animation">
-            <img src="images/gaia/gaia-3d-future-concept.gif?v=spin60" alt="3D Future Concept — animated Gaia Neural Band">
+          <button
+            type="button"
+            class="zoom-trigger zoom-trigger-video"
+            aria-label="Enlarge 3D Future Concept animation"
+            data-lightbox-video="images/gaia/gaia-3d-future-concept-spin.mp4?v=spin60"
+            data-lightbox-video-webm="images/gaia/gaia-3d-future-concept-spin.webm?v=spin60"
+            data-lightbox-poster="images/gaia/gaia-3d-future-concept-spin.gif?v=spin60"
+            data-lightbox-alt="3D Future Concept — animated Gaia Neural Band"
+          >
+            <video
+              class="concept-loop"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              poster="images/gaia/gaia-3d-future-concept-spin.gif?v=spin60"
+              aria-label="3D Future Concept — animated Gaia Neural Band"
+            >
+              <source src="images/gaia/gaia-3d-future-concept-spin.webm?v=spin60" type="video/webm">
+              <source src="images/gaia/gaia-3d-future-concept-spin.mp4?v=spin60" type="video/mp4">
+            </video>
           </button>
           <figcaption>3D Future Concept</figcaption>
         </figure>
@@ -373,11 +393,21 @@
       <button type="button" class="lightbox-close" data-lightbox-close aria-label="Close image preview">
         Close
       </button>
-      <img id="lightbox-image" src="" alt="">
+      <img id="lightbox-image" src="" alt="" hidden>
+      <video
+        id="lightbox-video"
+        class="lightbox-video"
+        controls
+        autoplay
+        muted
+        loop
+        playsinline
+        hidden
+      ></video>
       <p id="lightbox-caption" class="lightbox-caption"></p>
     </div>
   </div>
 
-  <script src="script.js?v=gaia5"></script>
+  <script src="script.js?v=gaia6"></script>
 </body>
 </html>

@@ -616,13 +616,15 @@ a {
   background: var(--ink-2);
 }
 
-.gallery img {
+.gallery img,
+.gallery video {
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
 }
 
-.gallery-tech img {
+.gallery-tech img,
+.gallery-tech video {
   object-fit: contain;
   background: #0a1016;
   padding: 0.5rem;
@@ -941,9 +943,17 @@ a {
   outline-offset: 3px;
 }
 
-.zoom-trigger img {
+.zoom-trigger img,
+.zoom-trigger video {
   width: 100%;
   pointer-events: none;
+}
+
+.zoom-trigger video.concept-loop {
+  display: block;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  background: #05080c;
 }
 
 .btn.zoom-trigger {
@@ -1022,7 +1032,8 @@ body.lightbox-open {
   outline: none;
 }
 
-.lightbox-panel img {
+.lightbox-panel img,
+.lightbox-panel video.lightbox-video {
   max-width: 100%;
   max-height: min(78vh, 900px);
   width: auto;
@@ -1032,6 +1043,10 @@ body.lightbox-open {
   border: 1px solid var(--line);
   background: #05080c;
   box-shadow: var(--shadow);
+}
+
+.lightbox-panel video.lightbox-video {
+  width: min(900px, 100%);
 }
 
 .lightbox-caption {
