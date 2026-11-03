@@ -1,0 +1,4 @@
+node_modules/
+pitch-deck/node_modules/
+*.log
+.DS_Store

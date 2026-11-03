@@ -1,0 +1,11 @@
+{
+  "name": "pitch-deck-export",
+  "private": true,
+  "description": "Export Artemis + Gaia pitch deck to PDF",
+  "scripts": {
+    "pdf": "node export-pdf.js"
+  },
+  "dependencies": {
+    "puppeteer": "^23.11.1"
+  }
+}
