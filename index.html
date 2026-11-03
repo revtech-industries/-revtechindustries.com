@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=gaia7">
+  <link rel="stylesheet" href="style.css?v=gaia8">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -239,31 +239,17 @@
             type="button"
             class="zoom-trigger zoom-trigger-video"
             aria-label="Enlarge 3D Future Concept animation"
-            data-lightbox-src="images/gaia/gaia-3d-future-concept.gif?v=frames60"
-            data-lightbox-video="images/gaia/gaia-3d-future-concept-spin.mp4?v=frames60"
-            data-lightbox-video-webm="images/gaia/gaia-3d-future-concept-spin.webm?v=frames60"
-            data-lightbox-poster="images/gaia/gaia-3d-future-concept.gif?v=frames60"
+            data-lightbox-src="images/gaia/gaia-3d-future-concept.gif?v=spin61"
+            data-lightbox-video="videos/gaia-3d-future-concept.mp4?v=spin61"
+            data-lightbox-video-webm="videos/gaia-3d-future-concept.webm?v=spin61"
+            data-lightbox-poster="images/gaia/gaia-3d-future-concept-poster.jpg?v=spin61"
             data-lightbox-alt="3D Future Concept — animated Gaia Neural Band"
           >
-            <!-- Prefer looping video when CDN has it; GIF fallback is the proven 60-frame original. -->
-            <video
-              class="concept-loop"
-              autoplay
-              muted
-              loop
-              playsinline
-              preload="metadata"
-              poster="images/gaia/gaia-3d-future-concept.gif?v=frames60"
-              aria-label="3D Future Concept — animated Gaia Neural Band"
-            >
-              <source src="images/gaia/gaia-3d-future-concept-spin.webm?v=frames60" type="video/webm">
-              <source src="images/gaia/gaia-3d-future-concept-spin.mp4?v=frames60" type="video/mp4">
-            </video>
+            <!-- Gallery uses the real 60-frame GIF so motion is visible without waiting on video autoplay. -->
             <img
-              class="concept-loop-fallback"
-              src="images/gaia/gaia-3d-future-concept.gif?v=frames60"
+              class="concept-loop-gif"
+              src="images/gaia/gaia-3d-future-concept.gif?v=spin61"
               alt="3D Future Concept — animated Gaia Neural Band"
-              hidden
             >
           </button>
           <figcaption>3D Future Concept</figcaption>
@@ -416,6 +402,6 @@
     </div>
   </div>
 
-  <script src="script.js?v=gaia7"></script>
+  <script src="script.js?v=gaia8"></script>
 </body>
 </html>

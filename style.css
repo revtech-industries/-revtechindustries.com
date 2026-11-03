@@ -949,7 +949,8 @@ a {
   pointer-events: none;
 }
 
-.zoom-trigger video.concept-loop {
+.zoom-trigger video.concept-loop,
+.zoom-trigger img.concept-loop-gif {
   display: block;
   aspect-ratio: 4 / 3;
   object-fit: contain;
