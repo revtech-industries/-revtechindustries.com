@@ -162,6 +162,27 @@ document.addEventListener("DOMContentLoaded", () => {
     if (closeBtn) closeBtn.focus();
   };
 
+  // If concept video 404s/fails, reveal the animated GIF fallback in-gallery.
+  document.querySelectorAll(".zoom-trigger-video").forEach((trigger) => {
+    const video = trigger.querySelector("video.concept-loop");
+    const fallback = trigger.querySelector("img.concept-loop-fallback");
+    if (!video || !fallback) return;
+    const showFallback = () => {
+      video.hidden = true;
+      fallback.hidden = false;
+    };
+    video.addEventListener("error", showFallback);
+    video.querySelectorAll("source").forEach((source) => {
+      source.addEventListener("error", showFallback);
+    });
+    // Probe: if first source 404s, browsers may not always fire video.error promptly.
+    fetch(video.currentSrc || video.querySelector("source")?.src || "", { method: "HEAD" })
+      .then((res) => {
+        if (!res.ok) showFallback();
+      })
+      .catch(showFallback);
+  });
+
   document.querySelectorAll(".zoom-trigger").forEach((trigger) => {
     trigger.addEventListener("click", () => {
       lastFocus = document.activeElement;
@@ -175,23 +196,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const videoMp4 = trigger.getAttribute("data-lightbox-video");
       const videoWebm = trigger.getAttribute("data-lightbox-video-webm");
+      const imageSrc =
+        trigger.getAttribute("data-lightbox-src") ||
+        trigger.querySelector("img")?.currentSrc ||
+        trigger.querySelector("img")?.src;
+
+      // Prefer video when available; fall back to GIF/image if video assets 404.
       if (videoMp4 || videoWebm) {
-        openLightboxVideo({
-          mp4: videoMp4,
-          webm: videoWebm,
-          poster: trigger.getAttribute("data-lightbox-poster") || "",
-          alt,
-        });
+        const candidates = [videoWebm, videoMp4].filter(Boolean);
+        Promise.any(
+          candidates.map((url) =>
+            fetch(url, { method: "HEAD" }).then((res) => {
+              if (!res.ok) throw new Error(String(res.status));
+              return url;
+            })
+          )
+        )
+          .then(() => {
+            openLightboxVideo({
+              mp4: videoMp4,
+              webm: videoWebm,
+              poster: trigger.getAttribute("data-lightbox-poster") || imageSrc || "",
+              alt,
+            });
+          })
+          .catch(() => {
+            openLightboxImage(imageSrc, alt);
+          });
         return;
       }
 
-      const dataSrc = trigger.getAttribute("data-lightbox-src");
-      const img = trigger.querySelector("img");
-      const src = dataSrc || img?.currentSrc || img?.src;
-      openLightboxImage(src, alt);
+      openLightboxImage(imageSrc, alt);
     });
   });
-
   if (lightbox) {
     lightbox.querySelectorAll("[data-lightbox-close]").forEach((el) => {
       el.addEventListener("click", closeLightbox);
